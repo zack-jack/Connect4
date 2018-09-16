@@ -32,4 +32,22 @@ class Game {
     this.activePlayer.activeToken.drawHTMLToken();
     this.ready = true;
   }
+
+  /**
+   * Moves the active token depending on what key player presses
+   * @param   {Object}    e - Keydown event object
+   */
+  handleKeydown(e) {
+    if (this.ready) {
+      if (e.key === "ArrowLeft") {
+        // Move the token left
+        this.activePlayer.activeToken.moveLeft();
+      } else if (e.key === "ArrowRight") {
+        // Move the token right
+        this.activePlayer.activeToken.moveRight(this.board.columns);
+      } else if (e.key === "ArrowDown") {
+        // Play the token
+      }
+    }
+  }
 }
