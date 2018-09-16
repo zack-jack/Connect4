@@ -9,6 +9,18 @@ class Space {
   }
 
   /**
+   * Checks if space has an associated token to find its owner
+   * @return  {(null|Object)} Returns null or the owner object of the space's associated token.
+   */
+  get owner() {
+    if (this.token === null) {
+      return null;
+    } else {
+      return this.token.owner;
+    }
+  }
+
+  /**
    * Draws the SVG spaces to be rendered on the board.
    */
   drawSVGSpace() {
@@ -24,5 +36,13 @@ class Space {
     svgSpace.setAttributeNS(null, "stroke", "none");
 
     document.getElementById("mask").appendChild(svgSpace);
+  }
+
+  /**
+   * Updates space to reflect a token has been dropped into it.
+   * @param {Object} token - The dropped token
+   */
+  mark(token) {
+    this.token = token;
   }
 }
