@@ -1,14 +1,14 @@
 class Game {
   constructor() {
     this.board = new Board();
-    this.players = createPlayers();
+    this.players = this.createPlayers();
     this.ready = false;
   }
   /**
    * Gets the active player
    * @return  {Object}    Player - the active player.
    */
-  getActivePlayer() {
+  get activePlayer() {
     return this.players.find(player => player.active);
   }
 
@@ -27,5 +27,9 @@ class Game {
   /**
    * Gets game ready for play
    */
-  startGame() {}
+  startGame() {
+    this.board.drawHTMLBoard();
+    this.activePlayer.activeToken.drawHTMLToken();
+    this.ready = true;
+  }
 }

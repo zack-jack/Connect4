@@ -15,17 +15,10 @@ class Player {
   createTokens(num) {
     const tokens = [];
 
-    /*
-    for (let i=0; i<num; i++) {
-      let token = new Token(index, this);
+    for (let i = 0; i < num; i++) {
+      let token = new Token(i, this);
       tokens.push(token);
     }
-    */
-
-    tokens.forEach((num, index) => {
-      let token = new Token(index, this);
-      tokens.push(token);
-    });
 
     return tokens;
   }
@@ -34,7 +27,7 @@ class Player {
    * Gets all tokens that haven't been dropped yet
    * @return  {array}     Array of unused tokens
    */
-  getUnusedTokens() {
+  get unusedTokens() {
     return this.tokens.filter(token => !token.dropped);
   }
 
@@ -44,7 +37,7 @@ class Player {
    * @return  {Object}     First token object in the array of
    *                       unused tokens
    */
-  getActiveToken() {
-    return this.getUnusedTokens[0];
+  get activeToken() {
+    return this.unusedTokens[0];
   }
 }

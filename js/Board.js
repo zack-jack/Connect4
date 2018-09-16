@@ -12,7 +12,6 @@ class Board {
   createSpaces() {
     const spaces = [];
 
-    /*
     for (let x = 0; x < this.columns; x++) {
       const column = [];
 
@@ -20,20 +19,8 @@ class Board {
         const space = new Space(x, y);
         column.push(space);
       }
-    }
-    */
-
-    spaces.forEach(x => {
-      const column = [];
-
-      column.forEach(y => {
-        const space = new Space(x, y);
-        column.push(space);
-      });
-
       spaces.push(column);
-    });
-
+    }
     return spaces;
   }
 
