@@ -45,7 +45,7 @@ class Token {
 
   /**
    * Moves html token one column to right.
-   * @param   {number}    columns - number of columns in the game board
+   * @param   {number}    columns - number of columns on the game board
    */
   moveRight(columns) {
     if (this.columnLocation < columns - 1) {
@@ -56,9 +56,8 @@ class Token {
 
   /**
    * Drops html token into targeted board space.
-   * @param   {Object}     target - Targeted space for dropped token.
-   * @param   {function}   reset  - The reset function to call after the
-   *                                drop animation has completed.
+   * @param   {Object}    Targeted space for dropped token.
+   * @param   {function}  The reset function to call after the drop animation has completed.
    */
   drop(target, reset) {
     this.dropped = true;

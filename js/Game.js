@@ -40,14 +40,33 @@ class Game {
   handleKeydown(e) {
     if (this.ready) {
       if (e.key === "ArrowLeft") {
-        // Move the token left
         this.activePlayer.activeToken.moveLeft();
       } else if (e.key === "ArrowRight") {
-        // Move the token right
         this.activePlayer.activeToken.moveRight(this.board.columns);
       } else if (e.key === "ArrowDown") {
-        // Play the token
+        this.playToken();
       }
+    }
+  }
+
+  /**
+   * Finds Space object to drop the Token into and then drops
+   */
+  playToken() {
+    let spaces = this.board.spaces;
+    let activeToken = this.activePlayer.activeToken;
+    let targetColumn = spaces[activeToken.columnLocation];
+    let targetSpace = null;
+
+    for (let space of targetColumn) {
+      if (space.token === null) {
+        targetSpace = space;
+      }
+    }
+
+    if (targetSpace !== null) {
+      game.ready = false;
+      activeToken.drop(targetSpace);
     }
   }
 }
